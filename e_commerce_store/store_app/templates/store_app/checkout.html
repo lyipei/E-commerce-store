@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkout </title>
+    <link rel="stylesheet" href="{% static 'store_app/styles.css' %}">
+</head>
+<body>
+    
+    <div class="cart-container">
+        <header>Order Summary</header>
+
+        {% if items %}
+        <table class="cart-table">
+            <tr>
+                <th>Product</th>
+                <th>Qty</th>
+                <th>Total</th>
+            </tr>
+
+            {% for item in items %}
+            <tr>
+                <td>{{ item.product.name }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>${{ item.total_price }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <p><strong>Order Total: ${{ total }}</strong></p>
+
+        <h3>Enter Your Information:</h3>
+
+        <form method="POST">
+            {% csrf_token %}
+            <label>Name:</label><br>
+            <input type="text" name="name" required><br><br>
+
+            <label>Email:</label><br>
+            <input type="email" name="email" required><br><br>
+
+            <label>Address:</label><br>
+            <textarea name="address" required></textarea><br><br>
+
+            <button type="submit" class="checkout-btn">Place Order</button>
+        </form>
+
+        {% else %}
+        <p class="empty-message">Your cart is empty.</p>
+        {% endif %}
+
+    </div>
+</body>
+</html>

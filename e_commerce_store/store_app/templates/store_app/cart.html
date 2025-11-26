@@ -1,0 +1,46 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="{% static 'store_app/styles.css' %}">
+</head>
+<body>
+    <header>Shopping Cart</header>
+    <div class="cart-container">
+
+        {% if items %}
+        <table class="cart-table">
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+            </tr>
+
+            {% for item in items %}
+            <tr>
+                <td>{{ item.product.name }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>${{ item.total_price }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <p style="font-size: 20px; font-weight: bold; margin-top: 20px;">
+            Cart Total: ${{ total }}
+        </p>
+
+        <!-- CHECKOUT BUTTON (you MUST create checkout page) -->
+        <a href="{% url 'checkout' %}" class="checkout-btn">Proceed to Checkout</a>
+
+        {% else %}
+        <p class="empty-message">Your cart is empty.</p>
+        {% endif %}
+
+        <br>
+        <a href="{% url 'product_list' %}" class="add-btn">Continue Shopping</a>
+
+    </div>
+</body>
+</html>
