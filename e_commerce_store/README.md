@@ -16,7 +16,7 @@ http://127.0.0.1:8000/
 This will display the product listing page, the main entry point of the app.
 
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/9eKQm5qNpoU)
 
 # Web Pages
 
@@ -45,7 +45,6 @@ Confirms the order, showing the customer's name and total amount. Content is dyn
 
 # Useful Websites
 
-{Make a list of websites that you found helpful in this project}
 * [Django documentation](https://docs.djangoproject.com/en/5.2/)
 * [Django Tutorial](https://docs.djangoproject.com/en/5.2/)
 
